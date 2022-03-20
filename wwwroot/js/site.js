@@ -1,4 +1,18 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿function GetDate() {
+    let current = new Date();
+    document.getElementById("time").innerHTML = current;
 
-// Write your JavaScript code.
+    FutureDate(current);
+
+    return (current);
+}
+
+function FutureDate(today) {
+    let future = today;
+
+    future.setMonth(future.getMonth() + 3);
+
+    document.getElementById("threeMonths").innerHTML = future;
+
+    return (future);
+}
