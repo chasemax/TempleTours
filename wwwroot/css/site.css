@@ -99,7 +99,7 @@ header li a {
 }
 
 header li a:hover {
-    color: black;
+    color: lightgray;
     text-decoration: none;
 }
 
@@ -112,4 +112,21 @@ ul.no-bullets {
     list-style-type: none !important;
     margin: 0 !important;
     padding: 0 !important;
+}
+
+body {
+    margin-top: 110px;
+}
+
+.temple-img {
+    height: 400px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.my-button {
+    background-color: #002b4e;
+    color: white !important;
+    border-color: #002b4e !important;
+    border-width: 2px;
 }
