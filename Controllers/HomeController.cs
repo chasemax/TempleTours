@@ -34,18 +34,17 @@ namespace TempleTours.Controllers
         }
 
         [HttpGet]
+        public IActionResult FillForm(Appointment apt) // Use the fillform viewmodel for the parameter here eventually
+        {
+            return View(apt);
+        }
+
+       [HttpPost]
         public IActionResult FillForm() // Use the fillform viewmodel for the parameter here eventually
         {
             return View();
         }
 
-        /* Need to figure out how to make this different than the one above, or if we combine the two FillForms
-        [HttpPost]
-        public IActionResult FillForm() // Use the fillform viewmodel for the parameter here eventually
-        {
-            return View();
-        }
-        */
 
         [HttpGet]
         public IActionResult Appointments()
