@@ -125,18 +125,20 @@ namespace TempleTours.Controllers
         }
 
         [HttpGet]
-        public IActionResult FillForm() // Use the fillform viewmodel for the parameter here eventually
+        public IActionResult FillForm(Appointment appt) // Use the fillform viewmodel for the parameter here eventually
         {
-
-            return View(new Signup());
+            Signup su = new Signup();
+            su.Appointment = appt;
+            return View(su);
         }
 
        [HttpPost]
-        public IActionResult FillForm(Appointment apt) // Use the fillform viewmodel for the parameter here eventually
+        public IActionResult FillForm(Appointment appt, Signup su) // Use the fillform viewmodel for the parameter here eventually
         {
-            return View();
-        }
+            signRepo.AddSignup(su);
 
+            return View(su);
+        }
 
         [HttpGet]
         public IActionResult Appointments()
