@@ -141,7 +141,19 @@ namespace TempleTours.Controllers
         [HttpGet]
         public IActionResult Appointments()
         {
-            return View();
+            /*///////////// CODE FOR ADDING A NEW SIGNUP WITH AN EXISTING APPOINTMENT ////////////////////
+            Appointment appt = apptRepo.Appointments.FirstOrDefault(x => x.Id == 3);
+            Signup newSignup = new Signup();
+            newSignup.Appointment = appt;
+            newSignup.Email = "maxfield.chase@gmail.com";
+            newSignup.GroupName = "Another Group";
+            newSignup.GroupSize = 14;
+            signRepo.AddSignup(newSignup);
+            */
+            
+
+            var signups = signRepo.Signups;
+            return View(signups);
         }
 
         [HttpPost]

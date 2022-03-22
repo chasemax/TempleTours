@@ -8,5 +8,7 @@ namespace TempleTours.Models
     public interface IAppointmentRepo
     {
         IQueryable<Appointment> Appointments { get; }
+
+        public void AddAppt(Appointment a);
     }
 }

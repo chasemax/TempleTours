@@ -1,4 +1,46 @@
 ﻿@{
 }
 
-<h1>Appointments Page</h1>
+@model IQueryable<Signup>
+
+<div class="row">
+    <div class="col-2">
+
+    </div>
+    <div class="col">
+        <h1 class="text-center my-3">Current Appointments</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Group Name</th>
+                    <th>Group Size</th>
+                    <th>Time</th>
+                    <th>Contact Email</th>
+                    <th>Contact Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var appt in Model)
+                {
+                    <tr>
+                        <td>@appt.GroupName</td>
+                        <td>@appt.GroupSize</td>
+                        <td>@appt.Appointment.Time.ToString()</td>
+                        <td>@appt.Email</td>
+                        <td>@appt.Phone</td>
+                        <td>
+                            <a class="btn-sm btn-primary">Edit</a>
+                        </td>
+                        <td>
+                            <a class="btn-sm btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-2">
+
+    </div>
+</div>

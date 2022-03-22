@@ -13,5 +13,11 @@ namespace TempleTours.Models
         public EFSignupRepo(TempleToursContext temp) => _ttc = temp;
 
         public IQueryable<Signup> Signups => _ttc.Signups.Include(x => x.Appointment);
+
+        public void AddSignup (Signup s)
+        {
+            _ttc.Add(s);
+            _ttc.SaveChanges();
+        }
     }
 }
