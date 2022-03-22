@@ -1,18 +1,22 @@
-﻿function GetDate() {
-    let current = new Date();
-    document.getElementById("time").innerHTML = current;
+﻿//function GetDate() {
+//    let current = new Date();
+//    document.getElementById("time").innerHTML = current;
 
-    FutureDate(current);
+//    FutureDate(current);
 
-    return (current);
-}
+//    return (current);
+//}
 
-function FutureDate(today) {
-    let future = today;
+//function FutureDate(today) {
+//    let future = today;
 
-    future.setMonth(future.getMonth() + 3);
+//    future.setMonth(future.getMonth() + 3);
 
-    document.getElementById("threeMonths").innerHTML = future;
+//    document.getElementById("threeMonths").innerHTML = future;
 
-    return (future);
+//    return (future);
+//}
+
+function nextSelect() {
+
 }
