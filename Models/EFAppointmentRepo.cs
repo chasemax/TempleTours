@@ -13,5 +13,11 @@ namespace TempleTours.Models
         public EFAppointmentRepo(TempleToursContext temp) => _ttc = temp;
 
         public IQueryable<Appointment> Appointments => _ttc.Appointments;
+
+        public void AddAppt (Appointment a)
+        {
+            _ttc.Add(a);
+            _ttc.SaveChanges();
+        }
     }
 }
