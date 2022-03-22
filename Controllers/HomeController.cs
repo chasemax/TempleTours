@@ -106,7 +106,7 @@ namespace TempleTours.Controllers
             su.Appointment.IsBooked = true;
             apptRepo.UpdateAppt(su.Appointment);
 
-            return View(su);
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
