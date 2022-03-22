@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
@@ -40,88 +41,52 @@ namespace TempleTours.Controllers
         [HttpGet]
         public IActionResult Signup()
         {
-            var year = DateTime.Now.Year;
-            var month = DateTime.Now.Month;
-            var day = DateTime.Now.Day;
+            DateTime tempdate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            DateTime thisTempDate = tempdate;
+            int[] hourlist = { 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
 
-            var nextYear = year + 1;
-
-            var daysInMonth = DateTime.DaysInMonth(year, month);
-
-            var futureMonth1 = 0;
-            var futureMonth2 = 0;
-            var futureMonth3 = 0;
-
-            var daysFutureMonth1 = 0;
-            var daysFutureMonth2 = 0;
-            var daysFutureMonth3 = 0;
-
-            var monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month);
-
-            if (month == 12)
+            for (int i = 1; i <= 90; i++)
             {
-                futureMonth1 = 1;
-                futureMonth2 = 2;
-                futureMonth3 = 3;
+                foreach (int appt in hourlist)
+                {
+                    DateTime checkdate = new DateTime(thisTempDate.Year, thisTempDate.Month, thisTempDate.Day, appt, 0, 0);
 
-                daysFutureMonth1 = DateTime.DaysInMonth(nextYear, futureMonth1);
-                daysFutureMonth2 = DateTime.DaysInMonth(nextYear, futureMonth2);
-                daysFutureMonth3 = DateTime.DaysInMonth(nextYear, futureMonth3);
-            }
-            else if (month == 11)
-            {
-                futureMonth1 = month + 1;
-                futureMonth2 = 1;
-                futureMonth3 = 2;
+                    if (apptRepo.Appointments.FirstOrDefault(x => x.Time == checkdate) == null)
+                    {
+                        Appointment newAppt = new Appointment();
+                        newAppt.Time = checkdate;
+                        newAppt.IsBooked = false;
 
-                daysFutureMonth1 = DateTime.DaysInMonth(year, futureMonth1);
-                daysFutureMonth2 = DateTime.DaysInMonth(nextYear, futureMonth2);
-                daysFutureMonth3 = DateTime.DaysInMonth(nextYear, futureMonth3);
-            }
-            else if (month == 10)
-            {
-                futureMonth1 = month + 1;
-                futureMonth2 = month + 2;
-                futureMonth3 = 1;
+                        apptRepo.AddAppt(newAppt);
+                    }
+                }
 
-                daysFutureMonth1 = DateTime.DaysInMonth(year, futureMonth1);
-                daysFutureMonth2 = DateTime.DaysInMonth(year, futureMonth2);
-                daysFutureMonth3 = DateTime.DaysInMonth(nextYear, futureMonth3);
-            }
-            else
-            {
-                futureMonth1 = month + 1;
-                futureMonth2 = month + 2;
-                futureMonth3 = month + 3;
-
-                daysFutureMonth1 = DateTime.DaysInMonth(year, futureMonth1);
-                daysFutureMonth2 = DateTime.DaysInMonth(year, futureMonth2);
-                daysFutureMonth3 = DateTime.DaysInMonth(year, futureMonth3);
+                thisTempDate = thisTempDate.AddDays(1);
             }
 
-            ViewBag.day = day;
-            ViewBag.month = month;
-            ViewBag.year = year;
-            ViewBag.daysInMonth = daysInMonth;
+            Dictionary<string, Dictionary<int, Dictionary<int, Appointment>>> AllAppts = new Dictionary<string, Dictionary<int, Dictionary<int, Appointment>>>();
 
-            ViewBag.daysFutureMonth1 = daysFutureMonth1;
-            ViewBag.daysFutureMonth2 = daysFutureMonth2;
-            ViewBag.daysFutureMonth3 = daysFutureMonth3;
 
-            ViewBag.futureMonth1 = futureMonth1;
-            ViewBag.futureMonth2 = futureMonth2;
-            ViewBag.futureMonth3 = futureMonth3;
+            foreach (Appointment a in apptRepo.Appointments.Where(x => x.Time >= tempdate && x.Time <= tempdate.AddDays(90)))
+            {
+                string month = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(a.Time.Month);
+                int day = a.Time.Day;
+                int hour = a.Time.Hour;
 
-            ViewBag.monthName = monthName;
-            ViewBag.futureMonthName1 = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(futureMonth1);
-            ViewBag.futureMonthName2 = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(futureMonth2);
-            ViewBag.futureMonthName3 = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(futureMonth3);
+                if (!AllAppts.ContainsKey(month))
+                {
+                    AllAppts.Add(month, new Dictionary<int, Dictionary<int, Appointment>>());
+                }
 
-            var booked = apptRepo.Appointments
-                .Where(x => x.IsBooked == true)
-                .ToList();
+                if (!AllAppts[month].ContainsKey(day))
+                {
+                    AllAppts[month].Add(day, new Dictionary<int, Appointment>());
+                }
 
-            return View(booked);
+                AllAppts[month][day].Add(hour, a);
+            }
+
+            return View(AllAppts);
         }
 
         [HttpGet]
