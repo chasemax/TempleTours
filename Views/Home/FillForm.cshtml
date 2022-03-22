@@ -1,4 +1,28 @@
 ﻿@{
 }
 
-<h1>Contact form page</h1>
+@model Signup
+<h1>Schedule Tour</h1>
+
+<form method="post" asp-controller="Home" asp-action="FillForm">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="GroupName">Group Name:</label>
+        <input asp-for="GroupName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="GroupSize">Group Size:</label>
+        <input asp-for="GroupSize" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Email">Email:</label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Phone">Phone:</label>
+        <input asp-for="Phone" class="form-control" />
+    </div>
+    <div class="float-end">
+        <input class="btn btn-primary" type="submit" value="Schedule Appointment" />
+    </div>
+</form>

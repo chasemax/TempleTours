@@ -13,7 +13,7 @@ namespace TempleTours.Controllers
 {
     public class HomeController : Controller
     {
-
+        
         public IAppointmentRepo apptRepo { get; set; }
         public ISignupRepo signRepo { get; set; }
 
@@ -125,18 +125,17 @@ namespace TempleTours.Controllers
         }
 
         [HttpGet]
+        public IActionResult FillForm(Appointment apt) // Use the fillform viewmodel for the parameter here eventually
+        {
+            return View(apt);
+        }
+
+       [HttpPost]
         public IActionResult FillForm() // Use the fillform viewmodel for the parameter here eventually
         {
             return View();
         }
 
-        /* Need to figure out how to make this different than the one above, or if we combine the two FillForms
-        [HttpPost]
-        public IActionResult FillForm() // Use the fillform viewmodel for the parameter here eventually
-        {
-            return View();
-        }
-        */
 
         [HttpGet]
         public IActionResult Appointments()
@@ -159,7 +158,13 @@ namespace TempleTours.Controllers
         [HttpPost]
         public IActionResult Appointments(int apptToDelete)
         {
+            Signup s = signRepo.Signups.FirstOrDefault(x => x.Id == apptToDelete);
+            s.Appointment.IsBooked = false;
+            apptRepo.UpdateAppt(s.Appointment);
+            signRepo.RemoveSignup(s);
             return View();
         }
+
+        
     }
 }

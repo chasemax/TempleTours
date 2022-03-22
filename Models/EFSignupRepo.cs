@@ -19,5 +19,16 @@ namespace TempleTours.Models
             _ttc.Add(s);
             _ttc.SaveChanges();
         }
+
+        public void UpdateSignup(Signup s)
+        {
+            _ttc.Update(s);
+            _ttc.SaveChanges();
+        }
+        public void RemoveSignup(Signup s)
+        {
+            _ttc.Remove(s);
+            _ttc.SaveChanges();
+        }
     }
 }

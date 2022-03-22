@@ -1,44 +1,5 @@
 ﻿@model List<Appointment>
 
-@*@for (int i = ViewBag.day; i <= ViewBag.daysInMonth; i++)
-{
-    <button type="button" class="btn my-button">@ViewBag.monthName @i</button>
-}
-
-<br />
-<br />
-
-@for (int i = 1; i <= ViewBag.daysFutureMonth1; i++)
-{
-    <button type="button" class="btn my-button">@ViewBag.futureMonthName1 @i</button>
-}
-
-<br />
-<br />
-
-@for (int i = 1; i <= ViewBag.daysFutureMonth2; i++)
-{
-    <button type="button" class="btn my-button">@ViewBag.futureMonthName2 @i</button>
-}
-
-<br />
-<br />
-
-@if (ViewBag.day < ViewBag.daysFutureMonth3)
-{
-    @for (int i = 1; i < ViewBag.day; i++)
-    {
-        <button type="button" class="btn my-button">@ViewBag.futureMonthName3 @i</button>
-    }
-}
-else
-{
-    @for (int i = 1; i < ViewBag.daysFutureMonth3; i++)
-    {
-        <button type="button" class="btn my-button">@ViewBag.futureMonthName3 @i</button>
-    }
-}*@
-
 <h1>Schedule Your Tour!</h1>
 <h4>View available time slots for each day</h4>
 
