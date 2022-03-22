@@ -158,6 +158,10 @@ namespace TempleTours.Controllers
         [HttpPost]
         public IActionResult Appointments(int apptToDelete)
         {
+            Signup s = signRepo.Signups.FirstOrDefault(x => x.Id == apptToDelete);
+            s.Appointment.IsBooked = false;
+            apptRepo.UpdateAppt(s.Appointment);
+            signRepo.RemoveSignup(s);
             return View();
         }
 
