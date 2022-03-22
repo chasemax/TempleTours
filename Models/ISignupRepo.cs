@@ -8,5 +8,7 @@ namespace TempleTours.Models
     public interface ISignupRepo
     {
         IQueryable<Signup> Signups { get; }
+
+        void AddSignup(Signup signup);
     }
 }

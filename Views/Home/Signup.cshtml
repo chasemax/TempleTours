@@ -1,8 +1,185 @@
-﻿@{
-}
+﻿@model List<Appointment>
 
-<h1>Signup Page</h1>
+<h1>Schedule Your Tour!</h1>
+<h4>View available time slots for each day</h4>
 
-<p id="time"></p>
-<p id="threeMonths"></p>
-<a href="../Views/Home/FillForm.cshtml" class="btn">This is a button</a>
+<div class="row">
+    <div class="col m-1">
+        <h2>@ViewBag.monthName</h2>
+
+        <div class="accordion" id="accordion">
+            @for (int i = ViewBag.day; i <= ViewBag.daysInMonth; i++)
+            {
+                <div class="card">
+                    <div class="card-header" id="heading-@ViewBag.monthName-@i">
+                        <h2 class="mb-0">
+                            <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse-@ViewBag.monthName-@i" aria-expanded="false" aria-controls="collapse-@ViewBag.monthName-@i">
+                                @ViewBag.monthName @i
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapse-@ViewBag.monthName-@i" class="collapse" aria-labelledby="heading-@ViewBag.monthName-@i" data-parent="#accordion">
+                        <div class="card-body">
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.monthName-@i-8AM">8:00 AM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.monthName-@i-9AM">9:00 AM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.monthName-@i-10AM">10:00 AM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.monthName-@i-11AM">11:00 AM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.monthName-@i-12PM">12:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.monthName-@i-1PM">1:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.monthName-@i-2PM">2:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.monthName-@i-3PM">3:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.monthName-@i-4PM">4:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.monthName-@i-5PM">5:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.monthName-@i-6PM">6:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.monthName-@i-7PM">7:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.monthName-@i-8PM">8:00 PM</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="col m-1">
+        <h2>@ViewBag.futureMonthName1</h2>
+
+        <div class="accordion" id="accordion">
+            @for (int i = 1; i <= ViewBag.daysFutureMonth2; i++)
+            {
+                <div class="card">
+                    <div class="card-header" id="heading-@ViewBag.futureMonthName1-@i">
+                        <h2 class="mb-0">
+                            <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse-@ViewBag.futureMonthName1-@i" aria-expanded="false" aria-controls="collapse-@ViewBag.futureMonthName1-@i">
+                                @ViewBag.futureMonthName1 @i
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapse-@ViewBag.futureMonthName1-@i" class="collapse" aria-labelledby="heading-@ViewBag.futureMonthName1-@i" data-parent="#accordion">
+                        <div class="card-body">
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName1-@i-8AM">8:00 AM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName1-@i-9AM">9:00 AM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName1-@i-10AM">10:00 AM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName1-@i-11AM">11:00 AM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName1-@i-12PM">12:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName1-@i-1PM">1:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName1-@i-2PM">2:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName1-@i-3PM">3:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName1-@i-4PM">4:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName1-@i-5PM">5:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName1-@i-6PM">6:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName1-@i-7PM">7:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName1-@i-8PM">8:00 PM</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="col m-1">
+        <h2>@ViewBag.futureMonthName2</h2>
+
+        <div class="accordion" id="accordion">
+            @for (int i = 1; i <= ViewBag.daysFutureMonth2; i++)
+            {
+                <div class="card">
+                    <div class="card-header" id="heading-@ViewBag.futureMonthName2-@i">
+                        <h2 class="mb-0">
+                            <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse-@ViewBag.futureMonthName2-@i" aria-expanded="false" aria-controls="collapse-@ViewBag.futureMonthName2-@i">
+                                @ViewBag.futureMonthName2 @i
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapse-@ViewBag.futureMonthName2-@i" class="collapse" aria-labelledby="heading-@ViewBag.futureMonthName2-@i" data-parent="#accordion">
+                        <div class="card-body">
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName2-@i-8AM">8:00 AM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName2-@i-9AM">9:00 AM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName2-@i-10AM">10:00 AM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName2-@i-11AM">11:00 AM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName2-@i-12PM">12:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName2-@i-1PM">1:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName2-@i-2PM">2:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName2-@i-3PM">3:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName2-@i-4PM">4:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName2-@i-5PM">5:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName2-@i-6PM">6:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName2-@i-7PM">7:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName2-@i-8PM">8:00 PM</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="col m-1">
+        <h2>@ViewBag.futureMonthName3</h2>
+
+        <div class="accordion" id="accordion">
+            @if (ViewBag.day < ViewBag.daysFutureMonth3)
+            {
+                @for (int i = 1; i < ViewBag.day; i++)
+                {
+                <div class="card">
+                    <div class="card-header" id="heading-@ViewBag.futureMonthName3-@i">
+                        <h2 class="mb-0">
+                            <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse-@ViewBag.futureMonthName3-@i" aria-expanded="false" aria-controls="collapse-@ViewBag.futureMonthName3-@i">
+                                @ViewBag.futureMonthName3 @i
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapse-@ViewBag.futureMonthName3-@i" class="collapse" aria-labelledby="heading-@ViewBag.futureMonthName3-@i" data-parent="#accordion">
+                        <div class="card-body">
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName3-@i-8AM">8:00 AM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName3-@i-9AM">9:00 AM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName3-@i-10AM">10:00 AM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName3-@i-11AM">11:00 AM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName3-@i-12PM">12:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName3-@i-1PM">1:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName3-@i-2PM">2:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName3-@i-3PM">3:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName3-@i-4PM">4:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName3-@i-5PM">5:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName3-@i-6PM">6:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName3-@i-7PM">7:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName3-@i-8PM">8:00 PM</a>
+                        </div>
+                    </div>
+                </div>
+                }
+            }
+            else
+            {
+                @for (int i = 1; i < ViewBag.daysFutureMonth3; i++)
+                {
+                <div class="card">
+                    <div class="card-header" id="heading-@ViewBag.futureMonthName3-@i">
+                        <h2 class="mb-0">
+                            <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse-@ViewBag.futureMonthName3-@i" aria-expanded="false" aria-controls="collapse-@ViewBag.futureMonthName3-@i">
+                                @ViewBag.futureMonthName3 @i
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapse-@ViewBag.futureMonthName3-@i" class="collapse" aria-labelledby="heading-@ViewBag.futureMonthName3-@i" data-parent="#accordion">
+                        <div class="card-body">
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName3-@i-8AM">8:00 AM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName3-@i-9AM">9:00 AM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName3-@i-10AM">10:00 AM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName3-@i-11AM">11:00 AM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName3-@i-12PM">12:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName3-@i-1PM">1:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName3-@i-2PM">2:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName3-@i-3PM">3:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName3-@i-4PM">4:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName3-@i-5PM">5:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName3-@i-6PM">6:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName3-@i-7PM">7:00 PM</a>
+                            <a class="btn my-button d-block m-1" asp-action="FillForm" asp-controller="Home" asp-route-id="@ViewBag.futureMonthName3-@i-8PM">8:00 PM</a>
+                        </div>
+                    </div>
+                </div>
+                }
+            }
+        </div>
+    </div>
+</div>
