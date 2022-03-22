@@ -125,13 +125,14 @@ namespace TempleTours.Controllers
         }
 
         [HttpGet]
-        public IActionResult FillForm(Appointment apt) // Use the fillform viewmodel for the parameter here eventually
+        public IActionResult FillForm() // Use the fillform viewmodel for the parameter here eventually
         {
-            return View(apt);
+
+            return View(new Signup());
         }
 
        [HttpPost]
-        public IActionResult FillForm() // Use the fillform viewmodel for the parameter here eventually
+        public IActionResult FillForm(Appointment apt) // Use the fillform viewmodel for the parameter here eventually
         {
             return View();
         }
