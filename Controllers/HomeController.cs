@@ -150,6 +150,7 @@ namespace TempleTours.Controllers
             signRepo.AddSignup(newSignup);
             */
             
+            
 
             var signups = signRepo.Signups;
             return View(signups);
@@ -162,7 +163,7 @@ namespace TempleTours.Controllers
             s.Appointment.IsBooked = false;
             apptRepo.UpdateAppt(s.Appointment);
             signRepo.RemoveSignup(s);
-            return View();
+            return RedirectToAction("Appointments");
         }
 
         

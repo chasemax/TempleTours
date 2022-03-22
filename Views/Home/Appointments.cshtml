@@ -34,10 +34,9 @@
                         </td>
                         <td>
                             <form method="post">
-                                <input type="hidden" value="@appt.Id" />
+                                <input type="hidden" name="apptToDelete" value="@appt.Id" />
                                 <button type="submit" class="btn-sm btn-danger">Delete</button>
                             </form>
-                            <a class="btn-sm btn-danger" asp-controller="Home" asp-a>Delete</a>
                         </td>
                     </tr>
                 }
