@@ -30,10 +30,14 @@
                         <td>@appt.Email</td>
                         <td>@appt.Phone</td>
                         <td>
-                            <a class="btn-sm btn-primary">Edit</a>
+                            <a class="btn-sm btn-primary" asp-controller="Home" asp-action="FillForm">Edit</a>
                         </td>
                         <td>
-                            <a class="btn-sm btn-danger">Delete</a>
+                            <form method="post">
+                                <input type="hidden" value="@appt.Id" />
+                                <button type="submit" class="btn-sm btn-danger">Delete</button>
+                            </form>
+                            <a class="btn-sm btn-danger" asp-controller="Home" asp-a>Delete</a>
                         </td>
                     </tr>
                 }
