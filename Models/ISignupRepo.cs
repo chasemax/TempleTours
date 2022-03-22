@@ -10,5 +10,9 @@ namespace TempleTours.Models
         IQueryable<Signup> Signups { get; }
 
         void AddSignup(Signup signup);
+
+        void UpdateSignup(Signup signup);
+        void RemoveSignup(Signup signup);
+   
     }
 }

@@ -13,7 +13,7 @@ namespace TempleTours.Controllers
 {
     public class HomeController : Controller
     {
-        private TempleToursContext Context { get; set; }
+        
         public IAppointmentRepo apptRepo { get; set; }
         public ISignupRepo signRepo { get; set; }
 
@@ -161,20 +161,6 @@ namespace TempleTours.Controllers
             return View();
         }
 
-        [HttpGet]
-        public IActionResult Delete(string GroupName)
-        {
-            var info = Context.Signups.Single(x => x.GroupName == GroupName);
-            return View(info);
-        }
-
-        [HttpPost]
-        public IActionResult Delete (Signup ar)
-        {
-            Context.Signups.Remove(ar);
-            Context.SaveChanges();
-
-            return RedirectToAction("FillForm");
-        }
+        
     }
 }

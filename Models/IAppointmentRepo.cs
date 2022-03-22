@@ -10,5 +10,10 @@ namespace TempleTours.Models
         IQueryable<Appointment> Appointments { get; }
 
         public void AddAppt(Appointment a);
+
+        public void UpdateAppt(Appointment a);
+        public void RemoveAppt(Appointment a);
+
+
     }
 }
