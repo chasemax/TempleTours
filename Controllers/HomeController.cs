@@ -151,6 +151,7 @@ namespace TempleTours.Controllers
             signRepo.AddSignup(newSignup);
             */
             
+            
 
             var signups = signRepo.Signups;
             return View(signups);
@@ -159,7 +160,11 @@ namespace TempleTours.Controllers
         [HttpPost]
         public IActionResult Appointments(int apptToDelete)
         {
-            return View();
+            Signup s = signRepo.Signups.FirstOrDefault(x => x.Id == apptToDelete);
+            s.Appointment.IsBooked = false;
+            apptRepo.UpdateAppt(s.Appointment);
+            signRepo.RemoveSignup(s);
+            return RedirectToAction("Appointments");
         }
 
         
