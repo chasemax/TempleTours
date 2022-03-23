@@ -14,7 +14,7 @@ namespace TempleTours.Controllers
 {
     public class HomeController : Controller
     {
-        
+
         public IAppointmentRepo apptRepo { get; set; }
         public ISignupRepo signRepo { get; set; }
 
@@ -98,7 +98,7 @@ namespace TempleTours.Controllers
             return View(su);
         }
 
-       [HttpPost]
+        [HttpPost]
         public IActionResult FillForm(Signup su) // Use the fillform viewmodel for the parameter here eventually
         {
             su.Appointment = apptRepo.Appointments.FirstOrDefault(x => x.Id == su.AppointmentId);
@@ -106,7 +106,7 @@ namespace TempleTours.Controllers
             su.Appointment.IsBooked = true;
             apptRepo.UpdateAppt(su.Appointment);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Appointments");
         }
 
         [HttpGet]
@@ -121,8 +121,8 @@ namespace TempleTours.Controllers
             newSignup.GroupSize = 14;
             signRepo.AddSignup(newSignup);
             */
-            
-            
+
+
 
             var signups = signRepo.Signups;
             return View(signups);
@@ -137,6 +137,7 @@ namespace TempleTours.Controllers
             signRepo.RemoveSignup(s);
             return RedirectToAction("Appointments");
         }
+
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -144,14 +145,14 @@ namespace TempleTours.Controllers
 
             return View("FillForm", signup);
         }
-/*        [HttpPost]
-*//*        public IActionResult Edit(Signup su)
+
+        [HttpPost]
+        public IActionResult Edit(Signup signup)
         {
-*//*           signRepo.UpdateSignup(su);
-           signRepo.SaveChanges();*//*
+            signRepo.UpdateSignup(signup);
+
             return RedirectToAction("Appointments");
-
-        }*/
-
+        }
     }
+
 }
