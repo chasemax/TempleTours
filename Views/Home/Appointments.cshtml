@@ -30,7 +30,7 @@
                         <td>@appt.Email</td>
                         <td>@appt.Phone</td>
                         <td>
-                            <a class="btn btn-sm my-button" asp-controller="Home" asp-action="FillForm">Edit</a>
+                            <a class="btn btn-sm my-button" asp-controller="Home" asp-action="Edit" asp-route-id="@appt.Id">Edit</a>
                         </td>
                         <td>
                             <form method="post">
