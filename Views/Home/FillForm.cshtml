@@ -4,9 +4,13 @@
 @model Signup
 
 <h1>Schedule Tour</h1>
-
-<form method="post" asp-controller="Home" asp-action="@(Model.Id == 0 ? "FillForm" : "Edit")" asp->
+<form method="post" asp-controller="Home" asp-action="@(Model.Id == 0 ? "FillForm" : "Edit")">
     <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Appointment.Time">Appointment:</label>
+        <input asp-for="Appointment.Time" class="form-control" disabled />
+    </div>
+
     <div class="form-group">
         <label asp-for="GroupName">Group Name:</label>
         <input asp-for="GroupName" class="form-control" />
@@ -23,8 +27,14 @@
         <label asp-for="Phone">Phone:</label>
         <input asp-for="Phone" class="form-control" />
     </div>
-    <input type="hidden" asp-for="AppointmentId"/>
+    <input type="hidden" asp-for="AppointmentId" />
     <div class="float-end">
         <input class="btn my-button" type="submit" value="Schedule Appointment" />
+        @if (Model.Id == 0)
+        {
+            <a asp-controller="Home" asp-action="Signup" class=" btn btn-danger">Return</a>
+        }
+
     </div>
+
 </form>
