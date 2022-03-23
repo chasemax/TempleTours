@@ -130,3 +130,10 @@ body {
     border-color: #002b4e !important;
     border-width: 2px;
 }
+
+.my-button:hover {
+    background-color: #00325b;
+    color: white !important;
+    border-color: #00325b !important;
+    border-width: 2px;
+}
