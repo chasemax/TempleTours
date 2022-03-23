@@ -101,12 +101,19 @@ namespace TempleTours.Controllers
         [HttpPost]
         public IActionResult FillForm(Signup su) // Use the fillform viewmodel for the parameter here eventually
         {
-            su.Appointment = apptRepo.Appointments.FirstOrDefault(x => x.Id == su.AppointmentId);
-            signRepo.AddSignup(su);
-            su.Appointment.IsBooked = true;
-            apptRepo.UpdateAppt(su.Appointment);
+            if (ModelState.IsValid)
+            {
+                su.Appointment = apptRepo.Appointments.FirstOrDefault(x => x.Id == su.AppointmentId);
+                signRepo.AddSignup(su);
+                su.Appointment.IsBooked = true;
+                apptRepo.UpdateAppt(su.Appointment);
 
-            return RedirectToAction("Appointments");
+                return RedirectToAction("Appointments");
+            }
+            else
+            {
+                return View(su);
+            }
         }
 
         [HttpGet]
@@ -149,9 +156,16 @@ namespace TempleTours.Controllers
         [HttpPost]
         public IActionResult Edit(Signup signup)
         {
-            signRepo.UpdateSignup(signup);
+            if (ModelState.IsValid)
+            {
+                signRepo.UpdateSignup(signup);
 
-            return RedirectToAction("Appointments");
+                return RedirectToAction("Appointments");
+            }
+            else
+            {
+                return View("FillForm", signup);
+            }
         }
     }
 
