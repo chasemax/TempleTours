@@ -4,8 +4,8 @@
 @model Signup
 
 <h1>Schedule Tour</h1>
+
 <form method="post" asp-controller="Home" asp-action="@(Model.Id == 0 ? "FillForm" : "Edit")">
-    <div asp-validation-summary="All" class="text-danger"></div>
     <div class="form-group">
         <label asp-for="Appointment.Time">Appointment:</label>
         <input asp-for="Appointment.Time" class="form-control" disabled />
@@ -13,14 +13,17 @@
 
     <div class="form-group">
         <label asp-for="GroupName">Group Name:</label>
+        @Html.ValidationMessageFor(m => m.GroupName, "", new { @class = "text-danger" })
         <input asp-for="GroupName" class="form-control" />
     </div>
     <div class="form-group">
         <label asp-for="GroupSize">Group Size:</label>
+        @Html.ValidationMessageFor(m => m.GroupSize, "", new { @class = "text-danger" })
         <input asp-for="GroupSize" class="form-control" />
     </div>
     <div class="form-group">
         <label asp-for="Email">Email:</label>
+        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
         <input asp-for="Email" class="form-control" />
     </div>
     <div class="form-group">
@@ -29,12 +32,12 @@
     </div>
     <input type="hidden" asp-for="AppointmentId" />
     <div class="float-end">
-        <input class="btn my-button" type="submit" value="Schedule Appointment" />
+
+        <input class="btn my-button" type="submit" value="@(Model.Id == 0 ? "Schedule Appointment" : "Save Changes")" />
         @if (Model.Id == 0)
         {
             <a asp-controller="Home" asp-action="Signup" class=" btn btn-danger">Return</a>
         }
-
     </div>
 
 </form>
