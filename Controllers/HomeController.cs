@@ -137,7 +137,21 @@ namespace TempleTours.Controllers
             signRepo.RemoveSignup(s);
             return RedirectToAction("Appointments");
         }
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var signup = signRepo.Signups.Single(x => x.Id == id);
 
-        
+            return View("FillForm", signup);
+        }
+/*        [HttpPost]
+*//*        public IActionResult Edit(Signup su)
+        {
+*//*           signRepo.UpdateSignup(su);
+           signRepo.SaveChanges();*//*
+            return RedirectToAction("Appointments");
+
+        }*/
+
     }
 }
