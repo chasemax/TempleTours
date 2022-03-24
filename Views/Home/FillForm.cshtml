@@ -5,10 +5,11 @@
 
 <h1>Schedule Tour</h1>
 
-<form method="post" asp-controller="Home" asp-action="@(Model.Id == 0 ? "FillForm" : "Edit")">
+<form method="post" asp-controller="Home" asp-action="@(ViewBag.check == 0 ? "FillForm" : "Edit")">
     <div class="form-group">
-        <label asp-for="Appointment.Time">Appointment:</label>
-        <input asp-for="Appointment.Time" class="form-control" disabled />
+        <label for="time">Appointment Time:</label>
+        <br />
+        <input class="form-control" name="time" value="@ViewBag.Time" disabled />
     </div>
 
     <div class="form-group">
@@ -33,10 +34,10 @@
     <input type="hidden" asp-for="AppointmentId" />
     <div class="float-end">
 
-        <input class="btn my-button" type="submit" value="@(Model.Id == 0 ? "Schedule Appointment" : "Save Changes")" />
-        @if (Model.Id == 0)
+        <input class="btn my-button" type="submit" value="@(ViewBag.check == 0 ? "Schedule Appointment" : "Save Changes")" />
+        @if (ViewBag.check == 0)
         {
-            <a asp-controller="Home" asp-action="Signup" class=" btn btn-danger">Return</a>
+            <a asp-controller="Home" asp-action="Signup" class=" btn btn-danger">Back</a>
         }
     </div>
 
