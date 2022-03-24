@@ -15,7 +15,7 @@ namespace TempleTours.Models
         [MaxLength(50)]
         public string GroupName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = ("Enter the number of people in your party"))]
         [Range(1, 15, ErrorMessage = ("Group Sizes must be between 1 and 15 persons"))]
         public int GroupSize { get; set; }
 
