@@ -15,11 +15,11 @@ namespace TempleTours.Models
         [MaxLength(50)]
         public string GroupName { get; set; }
 
-        [Required (ErrorMessage = "Group Sizes must be between 1 and 15 persons")]
-        [Range(1, 15)]
+        [Required]
+        [Range(1, 15, ErrorMessage = ("Group Sizes must be between 1 and 15 persons"))]
         public int GroupSize { get; set; }
 
-        [Required(ErrorMessage = "Enter a valid email")]
+        [Required(ErrorMessage = "Enter a valid Email")]
         [MaxLength(50)]
         public string Email { get; set; }
 

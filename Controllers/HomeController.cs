@@ -95,6 +95,9 @@ namespace TempleTours.Controllers
             Signup su = new Signup();
             su.Appointment = apptRepo.Appointments.FirstOrDefault(x => x.Id == id);
             su.AppointmentId = su.Appointment.Id;
+            ViewBag.check = 0;
+            ViewBag.Time = apptRepo.Appointments.FirstOrDefault(x => x.Id == su.AppointmentId).Time.ToString("MMMM d yyyy h:mm tt");
+
             return View(su);
         }
 
@@ -108,10 +111,13 @@ namespace TempleTours.Controllers
                 su.Appointment.IsBooked = true;
                 apptRepo.UpdateAppt(su.Appointment);
 
-                return RedirectToAction("Appointments");
+                return RedirectToAction("Index");
             }
             else
             {
+                ViewBag.check = 0;
+                ViewBag.Time = apptRepo.Appointments.FirstOrDefault(x => x.Id == su.AppointmentId).Time.ToString("MMMM d yyyy h:mm tt");
+
                 return View(su);
             }
         }
@@ -149,6 +155,8 @@ namespace TempleTours.Controllers
         public IActionResult Edit(int id)
         {
             var signup = signRepo.Signups.Single(x => x.Id == id);
+            ViewBag.check = 1;
+            ViewBag.Time = apptRepo.Appointments.FirstOrDefault(x => x.Id == signup.AppointmentId).Time.ToString("MMMM d yyyy h:mm tt");
 
             return View("FillForm", signup);
         }
